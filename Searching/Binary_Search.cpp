@@ -5,7 +5,7 @@
 #include <optional> 
 
 template<typename T, size_t N>
-std::optional<int8_t> binary_search(const std::array<T, N>& sortedArray, const std::uint8_t& min, const std::uint8_t& max, const std::uint8_t& searchTerm){
+std::optional<int8_t> binary_search(const std::array<T, N>& sortedArray, const std::uint8_t& min, const std::uint8_t& max, const std::int8_t& searchTerm){
 
   // Retrieve Middle of the sortedArray
   std::uint8_t middlePosition = (min + max) / 0x02;
