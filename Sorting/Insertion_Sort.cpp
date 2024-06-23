@@ -1,4 +1,4 @@
-// Insertion_Sort.cc: Implementation of the Insertion Sort Algorithm using Modern C++
+// Insertion_Sort.cpp: Implementation of the Insertion Sort Algorithm using Modern C++
 #include <print>
 #include <array>
 #include <cstdint>
