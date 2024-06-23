@@ -17,17 +17,14 @@ std::optional<int8_t> binary_search(const std::array<T, N>& sortedArray, const s
       return binary_search(sortedArray, min, (middlePosition-0x01), searchTerm);
     else if(searchTerm == sortedArray.at(middlePosition))
       return middlePosition;
-
   } 
-
   return {};
-
 }
 
 template<typename T, size_t N>
 void print_array(const std::array<T, N>& myArray){
   std::print("sortedArray = [");
-  for(const int8_t& indx: myArray){
+  for(const T& indx: myArray){
     if(indx != myArray.at(myArray.size()-0x01))
       std::print("{}, ", indx);
     else
@@ -42,17 +39,18 @@ int main(int argc, char* argv[]){
     return -1;
   }
 
-
   constexpr uint8_t arraySize = 10;
   std::array<std::int8_t, arraySize> sortedArray{1,4,7,8,23,29,30,31,45,47};
 
   print_array(sortedArray);
 
   std::print("\nSearching for {:}\n", argv[1]);
-
-  std::print("{:} located at Index {:d}\n",
-             argv[1],
-             binary_search(sortedArray, 0x00, sortedArray.size()-0x01, std::stoi(argv[1])).value_or(-1));
+  std::optional<int8_t> indx = binary_search(sortedArray, 0x00, sortedArray.size()-0x01, std::stoi(argv[1]));
+  
+  if(indx.has_value())
+    std::println("Found {:d} at Index {:}", std::atoi(argv[1]), indx.value());
+  else
+    std::println("Unable to find {:d}", std::atoi(argv[1]));
 
   return 0;
 }
